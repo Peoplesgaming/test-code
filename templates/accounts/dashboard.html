@@ -1,0 +1,80 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>Staff</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block btn btn-dark" href="">Create Employee</a>
+			<br>
+			<form class="form-inline my-2 my-md-0">
+            <input class="form-control" type="text" placeholder="Search Employees" aria-label="Search" name="Search_Employees">
+            </form>
+			<br>
+			<table class="table table-sm">
+				<tr>
+					<th>Employee Name</th>
+					<th>Role</th>
+					<th>Permanent Role</th>
+					<th>View</th>
+
+				</tr>
+
+				{% for customer in customers %}
+					<tr>
+						<td>{{customer.employee_name}}</td>
+						<td>{{customer.employee_role}}</td>
+						<td>{{customer.employee_permanent_role}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">View</a></td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Latest Requests</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="card text-center text-white" id="orders-pending">Latest Requests Table</a>
+			<br>
+			<form class="form-inline my-2 my-md-0">
+            <input class="form-control" type="text"  placeholder="Search Requests" aria-label="Search" name="Search_Requests">
+            </form>
+			<br>
+			<table class="table table-sm">
+				<tr>
+				    <th>Name</th>
+					<th>Request</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for orders in orders1 %}
+					<tr>
+					    <td>{{orders.staff}}</td>
+                        <td>{{orders.request}}</td>
+						<td>{{orders.date_created}}</td>
+						<td>{{orders.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' orders.id %}">Update</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' orders.id %}">Delete</a></td>
+					</tr>
+				{% endfor %}
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock %}

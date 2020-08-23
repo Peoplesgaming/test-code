@@ -1,0 +1,51 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+		  <a class="card text-center text-white" id="orders-pending"> {{staff.employee_name}} Make a Request</a>
+				<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				<table>
+				{{form.as_table}}
+				</table>
+                
+		
+			<input class="btn btn-dark" type="submit" name="Update Information">
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+		  <a class="card text-center text-white" id="orders-pending"> {{staff.employee_name}} Requests Table</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Request Type</th>
+					<th>Date/Time</th>
+					<th>Status</th>
+				</tr>
+				{% for orders in orders %}
+
+				<tr>
+				    <td>{{orders.request}}</td>
+					<td>{{orders.date_created}}</td>
+					<td>{{orders.status}}</td>
+				</tr>
+				   
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

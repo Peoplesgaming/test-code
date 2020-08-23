@@ -1,0 +1,50 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body" id="total-orders">
+			<h5 class="text-white bg-dark">Employee</h5>
+			<hr>
+			<a class="btn btn-success  btn-sm btn-block" href="">Place Employee Request</a>
+			<a class="btn btn-danger  btn-sm btn-block" href="">Delete Employee Requests </a>
+			
+			
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body"id="">
+			<h5 class="">Employee Information</h5>
+			<hr>
+			<form method="POST" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				<table>
+				{{form.as_table}}
+				</table>
+                
+		
+			<input class="btn btn-primary" type="submit" name="Update Information">
+			</form>
+
+		</div>
+	</div>
+
+
+</div>
+
+
+<br>
+
+<br>
+
+
+
+
+{% endblock %}
